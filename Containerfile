@@ -29,7 +29,7 @@ RUN dnf5 install -y \
     && dnf5 clean all
 
 # Comprehensive AMD/Mesa 32-bit & 64-bit hardware drivers
-RUN dnf5 install -y \
+RUN dnf5 install -y --skip-unavailable \
     mesa-vulkan-drivers \
     mesa-vulkan-drivers.i686 \
     mesa-dri-drivers \
@@ -38,8 +38,7 @@ RUN dnf5 install -y \
     mesa-libGL.i686 \
     mesa-libEGL \
     mesa-libEGL.i686 \
-    mesa-va-drivers \
-    mesa-va-drivers.i686 && \
+    mesa-va-drivers && \
     dnf5 clean all
 
 ## Virtualisation Stack
