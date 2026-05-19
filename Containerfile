@@ -1,6 +1,12 @@
 # Use the official Fedora Silverblue (GNOME) base image
 FROM quay.io/fedora-ostree-desktops/silverblue:44
 
+# Copy the public key to the staging area
+COPY cosign/cosign.pub /etc/pki/containers/atelier-silverblue.pub
+
+# Copy the policy configuration
+COPY policy.json /etc/containers/policy.json
+
 # Install RPM Fusion Free and Nonfree repositories directly
 RUN dnf install -y \
     https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-44.noarch.rpm \
