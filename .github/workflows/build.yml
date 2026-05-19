@@ -1,0 +1,52 @@
+name: Build and Push Custom Silverblue Image
+
+on:
+  schedule:
+    - cron: '0 0 * * 1' # Runs automatically every Monday at midnight (UTC) to fetch upstream updates
+  push:
+    branches:
+      - main # Runs whenever you push code changes to the main branch
+    paths:
+      - 'Containerfile' # Only triggers on push if the Containerfile actually changed
+  workflow_dispatch: # Allows you to manually trigger the build from the GitHub UI
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }} # This will resolve to "your-username/my-kinoite-dx"
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write # Crucial: Allows the action to publish to GHCR
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Log in to GitHub Container Registry
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # Build and push the image using Buildah (native to OCI / Podman ecosystem)
+      - name: Build and push image
+        uses: redhat-actions/buildah-build@v2
+        with:
+          image: ${{ env.IMAGE_NAME }}
+          tags: latest
+          containerfiles: |
+            ./Containerfile
+          oci: true
+
+      # Push the image to GHCR
+      - name: Push to GHCR
+        uses: redhat-actions/push-to-registry@v2
+        with:
+          image: ${{ env.IMAGE_NAME }}
+          tags: latest
+          registry: ${{ env.REGISTRY }}

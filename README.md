@@ -1,2 +1,2 @@
 # atelier-silverblue
-A beginner's attempt at creating a bootc image based on Fedora Silverblue.
+A beginner's attempt to customise Fedora Silverblue

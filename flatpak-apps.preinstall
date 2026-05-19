@@ -1,0 +1,35 @@
+[Flatpak Preinstall com.github.tchx84.Flatseal]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall com.heroicgameslauncher.hgl]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall com.nextcloud.desktopclient.nextcloud]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall com.vysp3r.ProtonPlus]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall com.ranfdev.DistroShelf]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall org.gimp.GIMP]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall org.inkscape.Inkscape]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall org.kde.krita]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall org.onlyoffice.desktopeditors]
+Branch=stable
+IsRuntime=false
