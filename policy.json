@@ -8,7 +8,7 @@
         "docker": {
             "ghcr.io/skittle-brau/atelier-silverblue": [
                 {
-                    "type": "sigstoreSigned",
+                    "type": "imageSigned",
                     "keyPath": "/etc/pki/containers/atelier-silverblue.pub"
                 }
             ],
