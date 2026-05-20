@@ -1,0 +1,3 @@
+docker:
+  ghcr.io/skittle-brau/atelier-silverblue:
+    use-sigstore-attachments: true

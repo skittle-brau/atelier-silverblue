@@ -8,8 +8,11 @@
         "docker": {
             "ghcr.io/skittle-brau/atelier-silverblue": [
                 {
-                    "type": "imageSigned",
-                    "keyPath": "/etc/pki/containers/atelier-silverblue.pub"
+                    "type": "sigstoreSigned",
+                    "keyPath": "/etc/pki/containers/atelier-silverblue.pub",
+                    "signedIdentity": {
+                        "type": "matchRepository"
+                    }
                 }
             ],
             "registry.fedoraproject.org": [
