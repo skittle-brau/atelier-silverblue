@@ -25,12 +25,12 @@ RUN dnf5 install -y \
 RUN dnf5 install -y \
     distrobox \
     gcc \
-    gnome-disk-utility \
     && dnf5 clean all
 
 ## Gaming
 RUN dnf5 install -y \
     steam \
+    gamescope \
     steam-devices \
     && dnf5 clean all
 
@@ -154,3 +154,4 @@ RUN rm -rf /var/lib/dnf /var/cache/dnf /var/log/dnf* /var/opt/1Password
 
 # If you need to enable systemd services, do it here
 #RUN systemctl enable tailscaled.service || true
+RUN systemctl enable libvirtd || true
