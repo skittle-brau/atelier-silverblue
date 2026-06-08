@@ -27,6 +27,12 @@ RUN dnf5 install -y \
     gcc \
     && dnf5 clean all
 
+## System
+RUN dnf5 install -y \
+    nfs-utils \
+    gvfs-nfs \
+    && dnf5 clean all
+
 ## Gaming
 RUN dnf5 install -y \
     steam \
