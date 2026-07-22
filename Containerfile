@@ -100,6 +100,10 @@ RUN mkdir -p /usr/lib/1Password && \
     mkdir -p /opt && \
     ln -sf /usr/lib/1Password /opt/1Password
 
+# Workaround for /usr/local (same OSTree symlink issue as /opt)
+RUN mkdir -p /var/usrlocal && \
+    ln -sf ../var/usrlocal /usr/local
+
 # Install 1Password, 1Password CLI, and other custom packages
 RUN dnf5 install -y \
     1password \
