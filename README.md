@@ -16,6 +16,14 @@ Since you are currently booted into a standard system that doesn't have these po
     # Copy your policy.json to the container configuration folder:
     sudo cp policy.json /etc/containers/policy.json
 
+    # Set up registries.d
+    sudo mkdir -p /etc/containers/registries.d
+    sudo tee /etc/containers/registries.d/atelier-silverblue.yaml > /dev/null <<'EOF'
+    docker:
+      ghcr.io/skittle-brau/atelier-silverblue:
+        use-sigstore-attachments: true
+    EOF
+
 ### 2. Perform the Rebase
 
 Now that the policy is active on your host machine, rpm-ostree will read /etc/containers/policy.json, see that ghcr.io/skittle-brau/atelier-silverblue requires a signature, and look for a match using your public key.
