@@ -63,6 +63,21 @@ RUN dnf5 install -y \
     qemu-kvm \
     && dnf5 clean all
 
+# Visual Studio Code
+## Add Microsoft's repository and GPG key
+RUN rpm --import https://packages.microsoft.com/keys/microsoft.asc && \
+    printf "[code]\n\
+name=Visual Studio Code\n\
+baseurl=https://packages.microsoft.com/yumrepos/vscode\n\
+enabled=1\n\
+gpgcheck=1\n\
+gpgkey=https://packages.microsoft.com/keys/microsoft.asc\n" > /etc/yum.repos.d/vscode.repo
+
+## Install VS Code
+RUN dnf5 install -y code \
+    && rm -f /etc/yum.repos.d/vscode.repo \
+    && dnf5 clean all
+
 # Enable the Cisco OpenH264 repo
 RUN sed -i 's/enabled=0/enabled=1/' /etc/yum.repos.d/fedora-cisco-openh264.repo
 
