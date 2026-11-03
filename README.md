@@ -45,3 +45,5 @@ All that's left is to reboot your system to step into your custom, secured deplo
 ### What happens next?
 
 From this point forward, your system is locked down. Every time you run rpm-ostree upgrade in the future, your system will securely pull down the new layers, look at the signature on GHCR, check it against your public key, and instantly reject the update if anyone tries to tamper with your container image!
+
+Note: rpm-ostree is deprecated and these instructions will be updated in future once I get around to adjusting it for bootc.
